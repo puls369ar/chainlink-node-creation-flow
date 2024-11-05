@@ -100,7 +100,7 @@ that is the core of interacting with node's offchain part*
 There is an official [implementation](https://github.com/smartcontractkit/LinkToken/blob/master/contracts/v0.4/LinkToken.sol) of the simplest ERC677 token, You can just redeploy it with your custom token name. It has `LinkToken()` function mints 1,000,000 tokens to caller's address, if it is a creator. This tokens will be needed for the contract that requests data, so this tokens should be transfer to the contract.
 
 Our chainlink node has the wallet address that needs to be funded by native tokens to pay for gas fees when interacting with network
-![Main page of Chainlink node GUI](https://github.com/puls369ar/chainlink-node-creation-flow/blob/main/chainlinkGUImain.png)
+![Main page of Chainlink node GUI](https://github.com/puls369ar/chainlink-node-creation-flow/blob/main/images/chainlinkGUImain.png)
 
 Also, there is an [Operator](https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.8/operatorforwarder/Operator.sol) contract which is the representative of the node and the main oracle that responds to data requests and collects `LINK` rewards for it. When deploying it two constructor arguments are passed
 `LINK` is the address of the ERC677 token that will be used as a reward and `OWNER` is authority with privileges, collecting rewards. After being deployed `setAuthorizedSenders()` function should be called and the address of the node discussed above should be passed as an array (There can be other nodes too). This makes `Operator` know which nodes are permitted to work with it.
@@ -108,10 +108,10 @@ Also, there is an [Operator](https://github.com/smartcontractkit/chainlink/blob/
 
 
 
-![Chainlink Node Architecture](https://github.com/puls369ar/chainlink-node-creation-flow/blob/main/Copy%20of%20l3usd-diagram.svg)
+![Chainlink Node Architecture](https://github.com/puls369ar/chainlink-node-creation-flow/blob/main/images/chainlinkNodeArchitecture.svg)
 
 
-Above is visual representation of chainlink node architecture. Also there are contracts and hardhat [script](#) present in this repo, covering all the steps discussed above. 
+Above is visual representation of chainlink node architecture. Also there are contracts and hardhat [script](#) (available soon) present in this repo, covering all the steps discussed above. 
 Finally, at the end  we need to create a job and provide it with Operator's address for it to know which Oracle is it interacting with. In node's GUI go to `Jobs->New Job`, in a text area we need to specify `TOML` syntax instructions that will fetch the data from the offchain APIs. In our example the job will request simple ETH/USD price with default `TOML` code
 ```toml
 
@@ -157,13 +157,13 @@ Find more details about the instructions [here](https://docs.chain.link/chainlin
 Hit `Create Job` button, If you did all right `JOB SUCCESSFULLY CREATED` message should appear at top.
 
 ## Requesting Data
-[ATestnetConsumer](https://github.com/puls369ar/chainlink-node-creation-flow/blob/main/ATestnetConsumer.sol) contract takes `LINK` address for constructor argument (MLINK for us). Don't forget to fund the contract with some tokens. After being deployed `getEthereumPrice()` function can be called with input arguments of Operator's address and `JobID` of the job created previously in node's GUI
-![JobID](https://github.com/puls369ar/chainlink-node-creation-flow/blob/main/id.png)
+[ATestnetConsumer](https://github.com/puls369ar/chainlink-node-creation-flow/blob/main/code/ATestnetConsumer.sol) contract takes `LINK` address for constructor argument (MLINK for us). Don't forget to fund the contract with some tokens. After being deployed `getEthereumPrice()` function can be called with input arguments of Operator's address and `JobID` of the job created previously in node's GUI
+![JobID](https://github.com/puls369ar/chainlink-node-creation-flow/blob/main/images/id.png)
 
 *Important note: Don't forget to remove dashes from JobID before calling the request*
 
 After the call you will be able to see the proccess of your instructions performances by choosing your specific run in `Runs` window
-![Runs]https://github.com/puls369ar/chainlink-node-creation-flow/blob/main/job.png
+![Runs]https://github.com/puls369ar/chainlink-node-creation-flow/blob/main/images/job.png
 
 *Note: Don't be afraid if the last submitting instructions is pending for long time, it takes over 5-7 minutes to finish. Also call's transaction will finish much earlier then the ndoe run itself* 
 
