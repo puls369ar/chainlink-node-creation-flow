@@ -88,6 +88,8 @@ CONTAINER ID   IMAGE                            COMMAND                  CREATED
 
 and you should be able node's GUI on [localhost:6688](http://localhost:6688/)
 
+## Configuring the node and creating related contracts
+As written in [docs](https://docs.chain.link/chainlink-nodes/v1/fulfilling-requests)
 
 
 Logs below were generated after `chainlink-flow.ts` script completed
