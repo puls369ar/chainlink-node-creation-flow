@@ -169,5 +169,6 @@ After the call you will be able to see the proccess of your instructions perform
 
 If you've done everything correctly, after run completed, getting `currentPrice` by it's getter `currentPrice()` function should return expected **ETH/USD** price fetched from the oracle and specified `LINK` token should be transfered from `ATestnetConsumer` to `Operator` contract.
 
+## And Lastly
 If this article helped you even a little bit and prevented from repeating my sins (on which I spend not a small amount of energy and time) then I consider the mission complete. I am open to critics and changes. Feel free to create pull request for an article if needed. Thanks.
 
