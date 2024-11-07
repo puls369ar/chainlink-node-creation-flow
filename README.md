@@ -111,7 +111,7 @@ Also, there is an [Operator](https://github.com/smartcontractkit/chainlink/blob/
 ![Chainlink Node Architecture](https://github.com/puls369ar/chainlink-node-creation-flow/blob/main/images/chainlinkNodeArchitecture.svg)
 
 
-Above is visual representation of chainlink node architecture. Also there are contracts and hardhat [script](#) (available soon) present in this repo, covering all the steps discussed above. 
+Above is visual representation of chainlink node architecture. Also there are contracts and hardhat [script](https://github.com/puls369ar/chainlink-node-creation-flow/blob/main/code/chainlink-create-flow.ts)  present in this repo, covering all the steps discussed above. 
 Finally, at the end  we need to create a job and provide it with Operator's address for it to know which Oracle is it interacting with. In node's GUI go to `Jobs->New Job`, in a text area we need to specify `TOML` syntax instructions that will fetch the data from the offchain APIs. In our example the job will request simple ETH/USD price with default `TOML` code
 ```toml
 
